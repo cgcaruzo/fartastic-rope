@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://RopeAndPlayers.gd" type="Script" id=2]
 [ext_resource path="res://main.gd" type="Script" id=3]
+[ext_resource path="res://sprites/5342773.jpg" type="Texture" id=4]
+[ext_resource path="res://sprites/inodoro.jpg" type="Texture" id=5]
+[ext_resource path="res://sprites/papel-higienico.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 200, 39.5 )
@@ -18,19 +21,56 @@ extents = Vector2( 405, 10 )
 position = Vector2( 87, 39 )
 script = ExtResource( 3 )
 
+[node name="5342773" type="Sprite" parent="."]
+position = Vector2( 1058, -29 )
+z_index = -50
+texture = ExtResource( 4 )
+
 [node name="RopeAndPlayers" type="RigidBody2D" parent="."]
-position = Vector2( 371, 429 )
+position = Vector2( 418, 402 )
+scale = Vector2( 0.76, 0.76 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RopeAndPlayers"]
 position = Vector2( 0, -0.5 )
 shape = SubResource( 1 )
 
-[node name="Player" parent="RopeAndPlayers" instance=ExtResource( 1 )]
+[node name="Line2D" type="Line2D" parent="RopeAndPlayers"]
+points = PoolVector2Array( -182.895, 1.3, 171.053, 1.3 )
+width = 5.0
+default_color = Color( 0.858824, 0.756863, 0.2, 1 )
+
+[node name="Papel-higienico" type="Sprite" parent="RopeAndPlayers/Line2D"]
+position = Vector2( -11.7236, 4.8158 )
+scale = Vector2( 0.388774, 0.363076 )
+texture = ExtResource( 6 )
+
+[node name="Player1" parent="RopeAndPlayers" instance=ExtResource( 1 )]
 position = Vector2( -202, 3 )
 
 [node name="Player2" parent="RopeAndPlayers" instance=ExtResource( 1 )]
 position = Vector2( 194, 6 )
+faceDirection = 1
+
+[node name="Camera2D" type="Camera2D" parent="RopeAndPlayers"]
+position = Vector2( 4, -70 )
+current = true
+
+[node name="Player1WinLabel" type="Label" parent="RopeAndPlayers/Camera2D"]
+visible = false
+margin_left = -85.0
+margin_top = -179.0
+margin_right = -5.0
+margin_bottom = -165.0
+text = "Player 1 Win"
+
+[node name="Player2WinLabel" type="Label" parent="RopeAndPlayers/Camera2D"]
+visible = false
+margin_left = -83.0
+margin_top = -181.0
+margin_right = -3.0
+margin_bottom = -167.0
+text = "Player 2 Win"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2( -2, 535 )
@@ -42,37 +82,27 @@ scale = Vector2( 0.997547, 4.08173 )
 shape = SubResource( 2 )
 
 [node name="AreaP1Win" type="Area2D" parent="."]
-position = Vector2( -18, 390 )
+position = Vector2( -602, 372 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaP1Win"]
 position = Vector2( 2, 46 )
 shape = SubResource( 3 )
 
+[node name="Sprite" type="Sprite" parent="AreaP1Win"]
+texture = ExtResource( 5 )
+
 [node name="AreaP2Win" type="Area2D" parent="."]
-position = Vector2( 804, 440 )
+position = Vector2( 2096, 403 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaP2Win"]
 shape = SubResource( 4 )
 
+[node name="Sprite" type="Sprite" parent="AreaP2Win"]
+texture = ExtResource( 5 )
+
 [node name="RestartTimer" type="Timer" parent="."]
 pause_mode = 2
 wait_time = 5.0
-
-[node name="Player1WinLabel" type="Label" parent="."]
-visible = false
-margin_left = 337.0
-margin_top = 153.0
-margin_right = 417.0
-margin_bottom = 167.0
-text = "Player 1 Win"
-
-[node name="Player2WinLabel" type="Label" parent="."]
-visible = false
-margin_left = 339.0
-margin_top = 151.0
-margin_right = 419.0
-margin_bottom = 165.0
-text = "Player 2 Win"
 
 [connection signal="area_entered" from="AreaP1Win" to="." method="_on_AreaP1Win_area_entered"]
 [connection signal="area_entered" from="AreaP2Win" to="." method="_on_AreaP2Win_area_entered"]

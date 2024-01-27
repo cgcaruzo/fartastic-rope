@@ -14,14 +14,14 @@ func _ready():
 func _on_AreaP1Win_area_entered(area):
 	print("GANO JUGADOR 1")
 	get_tree().paused = true
-	$Player1WinLabel.show()
+	$RopeAndPlayers/Camera2D/Player1WinLabel.show()
 	$RestartTimer.start()
 
 
 func _on_AreaP2Win_area_entered(area):
 	print("GANO JUGADOR 2")
 	get_tree().paused = true
-	$Player2WinLabel.show()
+	$RopeAndPlayers/Camera2D/Player1WinLabel.show()
 	$RestartTimer.start()
 
 
