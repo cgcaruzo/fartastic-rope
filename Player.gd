@@ -15,7 +15,7 @@ var isChargingFart = false
 var fartCharge = 0
 var indicatorInitialCharge = 0.2
 var indicatorEndCharge = 1
-var indicatorTime = 1
+var indicatorTime = 0.8
 var indicatorTransition = Tween.TRANS_CUBIC
 
 # Called when the node enters the scene tree for the first time.
@@ -46,6 +46,7 @@ func fart():
 	$Tween.reset_all()
 	
 	$FartIndicator.hide()
+	$FartPlaceholder.hide()
 	$CPUParticles2D.restart()
 	$CPUParticles2D.emitting = true
 	var fartForce = fartCharge*maxFartForce
@@ -63,6 +64,7 @@ func chargeFart():
 			Vector2(indicatorInitialCharge,indicatorInitialCharge), Vector2(indicatorEndCharge,indicatorEndCharge), indicatorTime,
 			indicatorTransition , Tween.EASE_IN)
 		$FartIndicator.show()
+		$FartPlaceholder.show()
 		$Tween.start()
 	isChargingFart = true
 #	if fartCharge <= maxFartCharge:

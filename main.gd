@@ -26,5 +26,9 @@ func _on_AreaP2Win_area_entered(area):
 
 
 func _on_RestartTimer_timeout():
-	get_tree().reload_current_scene()
 	get_tree().paused = false
+	get_tree().reload_current_scene()
+
+func _input(event):
+	if event is InputEventKey and event.scancode == KEY_ESCAPE and event.pressed:
+		get_tree().change_scene("res://MainMenu.tscn")
