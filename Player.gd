@@ -9,6 +9,7 @@ const basicForce = 5000
 const maxFartForce = 10000
 enum Direction {LEFT = -1, RIGHT = 1}
 export(Direction) var faceDirection = Direction.LEFT
+enum IndicatorPos { START, END }
 var tween_pos = 0
 var isChargingFart = false
 var fartCharge = 0
@@ -39,7 +40,7 @@ func _physics_process(delta):
 #func _process(delta):
 #	pass
 func fart():
-	print("FART")
+#	print("FART")
 	isChargingFart = false
 	$Tween.stop_all()
 	$Tween.reset_all()
@@ -50,10 +51,13 @@ func fart():
 	var fartForce = fartCharge*maxFartForce
 	fartCharge = 0
 	$FartChargeLabel.text = String(fartCharge)
+	var randomFart = randi() % $FartSounds.get_child_count()
+	print(randomFart)
+	$FartSounds.get_child(randomFart).play()
 	return fartForce
 	
 func chargeFart():
-	print("CHARGEFART")
+#	print("CHARGEFART")
 	if !isChargingFart:
 		$Tween.interpolate_property($FartIndicator, "scale",
 			Vector2(indicatorInitialCharge,indicatorInitialCharge), Vector2(indicatorEndCharge,indicatorEndCharge), indicatorTime,
