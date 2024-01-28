@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/papel-higienico.png-6b9192d427fa98e9f0bb712d819fc76d.stex"
+path="res://.import/rope.png-e74995150c9d72eb2ca2c45d4b02a804.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/papel-higienico.png"
-dest_files=[ "res://.import/papel-higienico.png-6b9192d427fa98e9f0bb712d819fc76d.stex" ]
+source_file="res://sprites/rope.png"
+dest_files=[ "res://.import/rope.png-e74995150c9d72eb2ca2c45d4b02a804.stex" ]
 
 [params]
 

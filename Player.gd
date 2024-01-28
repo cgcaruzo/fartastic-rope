@@ -6,16 +6,16 @@ extends Area2D
 # var b = "text"
 
 const basicForce = 5000
-const maxFartForce = 10000
+const maxFartForce = 15000
 enum Direction {LEFT = -1, RIGHT = 1}
 export(Direction) var faceDirection = Direction.LEFT
 enum IndicatorPos { START, END }
 var tween_pos = 0
 var isChargingFart = false
 var fartCharge = 0
-var indicatorInitialCharge = 0.2
+var indicatorInitialCharge = 0.1
 var indicatorEndCharge = 1
-var indicatorTime = 0.8
+var indicatorTime = 0.5
 var indicatorTransition = Tween.TRANS_CUBIC
 
 # Called when the node enters the scene tree for the first time.

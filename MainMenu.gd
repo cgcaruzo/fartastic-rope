@@ -1,7 +1,7 @@
 extends Control
 
 func _ready():
-	pass
+	OS.window_maximized = true
 
 func _input(event):
 	if event is InputEventKey and event.scancode == KEY_A and event.pressed:

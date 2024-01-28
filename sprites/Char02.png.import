@@ -2,25 +2,25 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/papel-higienico.png-6b9192d427fa98e9f0bb712d819fc76d.stex"
+path="res://.import/Char02.png-a12006d3ad2212213030c47d55c65f2a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/papel-higienico.png"
-dest_files=[ "res://.import/papel-higienico.png-6b9192d427fa98e9f0bb712d819fc76d.stex" ]
+source_file="res://sprites/Char02.png"
+dest_files=[ "res://.import/Char02.png-a12006d3ad2212213030c47d55c65f2a.stex" ]
 
 [params]
 
-compress/mode=3
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

@@ -1,14 +1,17 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://sprites/poop.png" type="Texture" id=2]
 [ext_resource path="res://sprites/Fart/fart01.png" type="Texture" id=3]
-[ext_resource path="res://sprites/personaje.png" type="Texture" id=4]
+[ext_resource path="res://sprites/Char03.png" type="Texture" id=4]
 [ext_resource path="res://sounds/fart01.mp3" type="AudioStream" id=5]
 [ext_resource path="res://sounds/fart02.mp3" type="AudioStream" id=6]
 [ext_resource path="res://sounds/fart04.mp3" type="AudioStream" id=7]
 [ext_resource path="res://sounds/fart05.mp3" type="AudioStream" id=8]
 [ext_resource path="res://sounds/fart03.mp3" type="AudioStream" id=9]
+[ext_resource path="res://sprites/Char02.png" type="Texture" id=10]
+[ext_resource path="res://sprites/Char01.png" type="Texture" id=11]
+[ext_resource path="res://sprites/Char04.png" type="Texture" id=12]
 
 [sub_resource type="Curve" id=2]
 max_value = 1.5
@@ -21,26 +24,6 @@ colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
 
-[sub_resource type="AtlasTexture" id=3]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 269, 435 )
-
-[sub_resource type="AtlasTexture" id=4]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 269, 0, 269, 435 )
-
-[sub_resource type="AtlasTexture" id=5]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 538, 0, 269, 435 )
-
-[sub_resource type="AtlasTexture" id=6]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 807, 0, 269, 435 )
-
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
 "frames": [  ],
@@ -48,10 +31,10 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"frames": [ ExtResource( 11 ), ExtResource( 10 ), ExtResource( 4 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "run",
-"speed": 12.0
+"speed": 8.0
 } ]
 
 [sub_resource type="Gradient" id=10]
@@ -88,10 +71,11 @@ color_ramp = SubResource( 8 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 0.2, 0.2 )
+scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 7 )
 animation = "run"
-frame = 1
+frame = 3
+playing = true
 
 [node name="FartChargeLabel" type="Label" parent="."]
 visible = false
@@ -104,7 +88,7 @@ margin_bottom = -125.0
 
 [node name="FartIndicator" type="Sprite" parent="."]
 visible = false
-position = Vector2( 0, -80 )
+position = Vector2( 0, -111 )
 texture = ExtResource( 2 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="FartIndicator"]
@@ -124,7 +108,7 @@ color_ramp = SubResource( 10 )
 [node name="FartPlaceholder" type="Sprite" parent="."]
 visible = false
 modulate = Color( 1, 1, 1, 0.27451 )
-position = Vector2( 0, -80 )
+position = Vector2( 0, -111 )
 texture = ExtResource( 2 )
 
 [node name="Fart01" type="AudioStreamPlayer2D" parent="."]

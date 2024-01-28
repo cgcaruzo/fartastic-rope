@@ -1,12 +1,14 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://RopeAndPlayers.gd" type="Script" id=2]
 [ext_resource path="res://main.gd" type="Script" id=3]
-[ext_resource path="res://sprites/5342773.jpg" type="Texture" id=4]
-[ext_resource path="res://sprites/inodoro.jpg" type="Texture" id=5]
+[ext_resource path="res://background/background01.png" type="Texture" id=4]
+[ext_resource path="res://sprites/inodoro.png" type="Texture" id=5]
 [ext_resource path="res://sprites/papel-higienico.png" type="Texture" id=6]
 [ext_resource path="res://music/GameLoop.ogg" type="AudioStream" id=7]
+[ext_resource path="res://fonts/PlayerWinsFont.tres" type="DynamicFont" id=8]
+[ext_resource path="res://sprites/rope.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 200, 39.5 )
@@ -21,13 +23,14 @@ extents = Vector2( 405, 10 )
 [node name="main" type="Node2D"]
 script = ExtResource( 3 )
 
-[node name="5342773" type="Sprite" parent="."]
-modulate = Color( 1, 0.639216, 0.639216, 1 )
-position = Vector2( 1058, -29 )
+[node name="Background01" type="Sprite" parent="."]
+position = Vector2( -29, 27 )
+scale = Vector2( 2.44, 2.44 )
 z_index = -50
 texture = ExtResource( 4 )
 
 [node name="RopeAndPlayers" type="RigidBody2D" parent="."]
+position = Vector2( 0, 50 )
 scale = Vector2( 0.76, 0.76 )
 script = ExtResource( 2 )
 
@@ -35,19 +38,22 @@ script = ExtResource( 2 )
 position = Vector2( 0, 87.6579 )
 shape = SubResource( 1 )
 
-[node name="Line2D" type="Line2D" parent="RopeAndPlayers"]
-position = Vector2( 0, 88.1579 )
-points = PoolVector2Array( -182.895, 1.3, 171.053, 1.3 )
-width = 5.0
-default_color = Color( 0.858824, 0.756863, 0.2, 1 )
+[node name="Rope" type="Sprite" parent="RopeAndPlayers"]
+position = Vector2( -6.57895, 60.5263 )
+scale = Vector2( 2.329, 2.32 )
+texture = ExtResource( 9 )
 
-[node name="Papel-higienico" type="Sprite" parent="RopeAndPlayers/Line2D"]
-position = Vector2( -11.7236, 4.8158 )
-scale = Vector2( 0.388774, 0.363076 )
+[node name="Papel-higienico" type="Sprite" parent="RopeAndPlayers/Rope"]
+position = Vector2( -2.209, 20.079 )
+scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 6 )
 
 [node name="Player1" parent="RopeAndPlayers" instance=ExtResource( 1 )]
 position = Vector2( -202, 91.1579 )
+
+[node name="AnimatedSprite" parent="RopeAndPlayers/Player1" index="2"]
+frame = 2
+flip_h = true
 
 [node name="Player2" parent="RopeAndPlayers" instance=ExtResource( 1 )]
 position = Vector2( 194, 94.1579 )
@@ -55,26 +61,35 @@ faceDirection = 1
 
 [node name="Camera2D" type="Camera2D" parent="RopeAndPlayers"]
 current = true
+limit_top = -128
 smoothing_enabled = true
 
 [node name="Player1WinLabel" type="Label" parent="RopeAndPlayers/Camera2D"]
 visible = false
-margin_left = -85.0
-margin_top = -179.0
-margin_right = -5.0
-margin_bottom = -165.0
-text = "Player 1 Win"
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -130.0
+margin_top = -120.0
+margin_right = 130.0
+margin_bottom = -100.0
+custom_fonts/font = ExtResource( 8 )
+text = "Player 1 Wins"
+align = 1
+valign = 1
 
 [node name="Player2WinLabel" type="Label" parent="RopeAndPlayers/Camera2D"]
 visible = false
-margin_left = -83.0
-margin_top = -181.0
-margin_right = -3.0
-margin_bottom = -167.0
-text = "Player 2 Win"
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -130.0
+margin_top = -120.0
+margin_right = 130.0
+margin_bottom = -100.0
+custom_fonts/font = ExtResource( 8 )
+text = "Player 2 Wins"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( -1499, 163 )
+position = Vector2( -1499, 208 )
 scale = Vector2( 7.4, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
@@ -83,21 +98,26 @@ scale = Vector2( 0.997547, 4.08173 )
 shape = SubResource( 2 )
 
 [node name="AreaP1Win" type="Area2D" parent="."]
-position = Vector2( -500, 74 )
+position = Vector2( -750, 119 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaP1Win"]
 shape = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="AreaP1Win"]
+position = Vector2( -148, -69 )
+scale = Vector2( 3, 3 )
 texture = ExtResource( 5 )
+flip_h = true
 
 [node name="AreaP2Win" type="Area2D" parent="."]
-position = Vector2( 500, 74 )
+position = Vector2( 750, 119 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaP2Win"]
 shape = SubResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="AreaP2Win"]
+position = Vector2( 145, -70 )
+scale = Vector2( 3, 3 )
 texture = ExtResource( 5 )
 
 [node name="RestartTimer" type="Timer" parent="."]
@@ -112,3 +132,5 @@ autoplay = true
 [connection signal="area_entered" from="AreaP1Win" to="." method="_on_AreaP1Win_area_entered"]
 [connection signal="area_entered" from="AreaP2Win" to="." method="_on_AreaP2Win_area_entered"]
 [connection signal="timeout" from="RestartTimer" to="." method="_on_RestartTimer_timeout"]
+
+[editable path="RopeAndPlayers/Player1"]

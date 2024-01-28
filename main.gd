@@ -21,7 +21,7 @@ func _on_AreaP1Win_area_entered(area):
 func _on_AreaP2Win_area_entered(area):
 	print("GANO JUGADOR 2")
 	get_tree().paused = true
-	$RopeAndPlayers/Camera2D/Player1WinLabel.show()
+	$RopeAndPlayers/Camera2D/Player2WinLabel.show()
 	$RestartTimer.start()
 
 
