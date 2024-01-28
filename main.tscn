@@ -22,6 +22,7 @@ position = Vector2( 87, 39 )
 script = ExtResource( 3 )
 
 [node name="5342773" type="Sprite" parent="."]
+modulate = Color( 1, 0.639216, 0.639216, 1 )
 position = Vector2( 1058, -29 )
 z_index = -50
 texture = ExtResource( 4 )

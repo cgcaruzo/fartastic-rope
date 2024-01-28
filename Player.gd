@@ -41,8 +41,9 @@ func _physics_process(delta):
 func fart():
 	print("FART")
 	isChargingFart = false
-	$Tween.reset_all()
 	$Tween.stop_all()
+	$Tween.reset_all()
+	
 	$FartIndicator.hide()
 	$CPUParticles2D.restart()
 	$CPUParticles2D.emitting = true
@@ -54,6 +55,9 @@ func fart():
 func chargeFart():
 	print("CHARGEFART")
 	if !isChargingFart:
+		$Tween.interpolate_property($FartIndicator, "scale",
+			Vector2(indicatorInitialCharge,indicatorInitialCharge), Vector2(indicatorEndCharge,indicatorEndCharge), indicatorTime,
+			indicatorTransition , Tween.EASE_IN)
 		$FartIndicator.show()
 		$Tween.start()
 	isChargingFart = true

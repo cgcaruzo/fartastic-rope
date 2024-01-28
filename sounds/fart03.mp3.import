@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/fart03.mp3-05bcb50cae7f7d1d55fa95bbfef80b4b.mp3str"
+
+[deps]
+
+source_file="res://sounds/fart03.mp3"
+dest_files=[ "res://.import/fart03.mp3-05bcb50cae7f7d1d55fa95bbfef80b4b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
